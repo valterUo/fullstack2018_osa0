@@ -1,0 +1,11 @@
+title Authentication Sequence
+käyttäjä->selain: käyttäjä painaa nappulaa
+selain->palvelin: HTTP POST pyyntö osoitteeseen new_note_spa
+note left of palvelin
+data on json-muodossa, minkä kertoo 
+headerin Content-Type
+end note
+note left of palvelin
+lähettämisen hoitaa selaimen lataama JavaScript-koodi
+end note
+palvelin->selain: status 201 created

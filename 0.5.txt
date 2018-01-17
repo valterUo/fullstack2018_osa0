@@ -1,0 +1,38 @@
+title Authentication Sequence
+käyttäjä->selain:
+note left of selain
+käyttäjä kirjottaa osoiteriville
+ fullstack-exampleapp.herokuapp.com/notes
+end note 
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/notes
+note left of palvelin
+1. pyyntö tyypiltään document
+end note
+palvelin->selain: status 200, sivun HTML-koodi
+selain->palvelin: GET main.css
+note left of palvelin
+2. pyyntö tyypiltään stylesheet
+end note
+palvelin->selain: status 200, sivun CSS-tyylitiedosto
+note left of selain
+HTML-koodin head-osio sisältää script-tagin
+end note
+selain->palvelin: GET spa.js
+note left of palvelin
+3. pyyntö tyypiltään script
+end note
+palvelin->selain: status 200, spa.js
+note left of selain
+selain suorittaa JavaScript-koodin
+end note
+note left of selain
+koodi sisältää ohjeen uudesta GET-pyynnöstä
+end note
+selain->palvelin: GET /data.json
+note left of palvelin
+4. pyyntö tyypiltään xhr
+end note
+palvelin->selain: status 200, /data.json
+note left of selain
+json-tiedosto sisältää raakadatan
+end note

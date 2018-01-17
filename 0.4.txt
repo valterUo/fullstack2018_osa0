@@ -1,0 +1,31 @@
+title Authentication Sequence
+käyttäjä->selain: käyttäjä painaa nappulaa
+selain->palvelin: HTTP POST -pyyntö, tyypiltään text/html
+note left of palvelin
+pyyntö palvelimen kohteeseen new_note
+end note
+note left of palvelin
+pyyntö sisältää datan
+end note
+note right of palvelin
+palvelin saa datan req-olion kestästä req.body
+end note
+note right of palvelin
+palvelin viittaa dataan req.body.note
+end note
+note right of palvelin
+palvelin luo uuden muistiinpano-olion ja
+laittaa sen taulukkoon notes
+end note
+palvelin->selain: status 302, uudelleenohjaus
+note left of palvelin
+muistiinpanot-sivu ladataan uudelleen
+end note
+selain->palvelin: HTTP GET notes
+palvelin->selain: status 200, notes
+selain->palvelin: HTTP GET main.css
+palvelin->selain: status 200, main.css
+selain->palvelin: HTTP GET main.js
+palvelin->selain: status 200, main.js
+selain->palvelin: HTTP GET data.json
+palvelin->selain: status 200, data.json
